@@ -21,13 +21,8 @@
 
 <!ELEMENT statements (statement*)>
 
-<!ELEMENT statement (observer+)>
+<!ELEMENT statement (observer*)>
+<!ATTLIST statement id CDATA #REQUIRED>
 
-<!ELEMENT statement EMPTY>
-<!ATTLIST statement
-id CDATA #REQUIRED
->
 <!ELEMENT observer EMPTY>
-<!ATTLIST observer
-id CDATA #REQUIRED
->
+<!ATTLIST observer id CDATA #REQUIRED>

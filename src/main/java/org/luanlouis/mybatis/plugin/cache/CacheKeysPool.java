@@ -6,8 +6,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-
-
 /**
  * CacheKey缓冲池
  * 记录MyBatis的每次查询的查询所产生的CacheKey
@@ -16,14 +14,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author louluan
  * @date   2014-12-5
  */
-public class CacheKeysPool
-{
+public class CacheKeysPool {
 	private Map<String,Set<Object>> pool = new ConcurrentHashMap<String,Set<Object>>();
 	
-	public Set<Object> get(String key)
-	{
-		if(pool.get(key)==null)
-		{
+	public Set<Object> get(String key) {
+		if(pool.get(key)==null) {
 			pool.put(key, new HashSet<Object>());
 		}
 		return pool.get(key);
@@ -34,10 +29,8 @@ public class CacheKeysPool
 		return pool.put(key, value);
 	}
 	
-	public void putElement(String key,Object element)
-	{
-		if(pool.get(key)==null)
-		{
+	public void putElement(String key,Object element) {
+		if(pool.get(key)==null) {
 			pool.put(key, new HashSet<Object>());
 		}
 		pool.get(key).add(element);
@@ -68,12 +61,9 @@ public class CacheKeysPool
 		return this.pool.entrySet();
 	}
 	
-	public void putAll(CacheKeysPool pool)
-	{
-		for(Entry<String, Set<Object>> entry : pool.entrySet())
-		{
-			for(Object item:entry.getValue())
-			{
+	public void putAll(CacheKeysPool pool) {
+		for(Entry<String, Set<Object>> entry : pool.entrySet()) {
+			for(Object item:entry.getValue()) {
 				this.putElement(entry.getKey(), item);
 			}
 		}

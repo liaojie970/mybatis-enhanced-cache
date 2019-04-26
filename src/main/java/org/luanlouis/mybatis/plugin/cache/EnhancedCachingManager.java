@@ -24,13 +24,13 @@ import org.apache.ibatis.cache.Cache;
 public interface EnhancedCachingManager {
 	
 	
-	public boolean isInitialized();
+	 boolean isInitialized();
 	
 	/**
 	 * MyBatis是否开启了二级缓存，即 <setting name="cacheEnabled" value="true"/> 
 	 * @return
 	 */
-	public boolean isCacheEnabled();
+	 boolean isCacheEnabled();
 
 	/**
 	 * 
@@ -41,13 +41,13 @@ public interface EnhancedCachingManager {
 	 * 		dependency 	: 该值表示着缓存依赖配置文件的位置
 	 * 		cacheEnbled	: "true" or "false",该配置必须要与<setting name="cacheEnabled">的值保持一致
 	 */
-	public void initialize(Properties properties);
+	 void initialize(Properties properties);
 	
 	/**
 	 * 将Session会话级别产生的CacheKey缓冲池中的数据 更新到全局CacheKey缓冲池中
 	 * @param sessionCacheKeysPool
 	 */
-	public void refreshCacheKey(CacheKeysPool sessionCacheKeysPool);
+	 void refreshCacheKey(CacheKeysPool sessionCacheKeysPool);
 	
 	/**
 	 * 整个插件的核心，根据指定的statementId更新与之关联的二级缓存
@@ -55,7 +55,7 @@ public interface EnhancedCachingManager {
 	 * EnhancedCachingManager将通过查询相应的StatementId去查看是否配置了依赖关系，如果有，则将依赖关系中的statementId的查询缓存全部清空
 	 * @param set
 	 */
-	public void clearRelatedCaches(Set<String> set);
+	 void clearRelatedCaches(Set<String> set);
 	
 	
 	/**
@@ -64,7 +64,6 @@ public interface EnhancedCachingManager {
 	 * @param statementId
 	 * @param cache
 	 */
-	public void appendStatementCacheMap(String statementId,Cache cache);
-	
+	 void appendStatementCacheMap(String statementId,Cache cache);
 
 }
